@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一个稳定的入口 · 华体会</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e5f0ef;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1f2b2a;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 780px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      border-radius: 40px 40px 32px 32px;
+      box-shadow: 0 12px 30px rgba(0, 40, 40, 0.08);
+      padding: 2.2rem 2rem 2.8rem;
+      transition: all 0.2s ease;
+    }
+
+    /* 开场短句 — 像轻轻推开门 */
+    .opening {
+      font-size: 1.6rem;
+      font-weight: 350;
+      letter-spacing: 1px;
+      color: #1e3d3b;
+      border-left: 5px solid #2b8b8a;
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+
+    .opening span {
+      display: inline-block;
+      background: #d7eceb;
+      padding: 0 0.4rem;
+      font-weight: 430;
+    }
+
+    /* 承接段落 */
+    .lead {
+      background: #f4faf9;
+      padding: 1.6rem 1.8rem;
+      border-radius: 28px;
+      margin-bottom: 2.5rem;
+      box-shadow: inset 0 0 0 1px rgba(43, 139, 138, 0.15);
+      font-size: 1.04rem;
+    }
+
+    .lead strong {
+      color: #1f6a68;
+      font-weight: 500;
+    }
+
+    .lead a {
+      color: #166b69;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px dashed #3c9c9a;
+      transition: border 0.2s;
+    }
+
+    .lead a:hover {
+      border-bottom-style: solid;
+      color: #094c4a;
+    }
+
+    /* 网格卡片 — 特点列表 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.3rem 1.2rem;
+      box-shadow: 0 4px 12px rgba(0, 35, 35, 0.05);
+      border: 1px solid #d2e7e5;
+      transition: 0.2s ease;
+    }
+
+    .feature-card:hover {
+      border-color: #7dc4c2;
+      box-shadow: 0 8px 18px rgba(30, 100, 100, 0.06);
+      transform: translateY(-3px);
+    }
+
+    .feature-card .icon {
+      font-size: 1.7rem;
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #2a7f7d;
+    }
+
+    .feature-card h3 {
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: #0f3d3b;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: #2f4b4a;
+      opacity: 0.85;
+    }
+
+    /* 温和结尾 + 一句话链接 */
+    .gentle-outro {
+      background: #dcefef;
+      padding: 1.6rem 1.8rem;
+      border-radius: 30px;
+      margin: 1.5rem 0 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #bddad8;
+    }
+
+    .gentle-outro a {
+      color: #115553;
+      text-decoration: none;
+      font-weight: 520;
+      background: rgba(255,255,240,0.4);
+      padding: 0.1rem 0.3rem;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .gentle-outro a:hover {
+      background: #aed4d2;
+    }
+
+    .small-note {
+      color: #3b5f5d;
+      font-size: 0.9rem;
+      margin-top: 1.2rem;
+      text-align: right;
+      border-top: 1px solid #c4dbd9;
+      padding-top: 1rem;
+      opacity: 0.7;
+    }
+
+    /* 移动端优化 */
+    @media (max-width: 520px) {
+      body {
+        padding: 0.8rem;
+      }
+      .container {
+        padding: 1.5rem 1rem 2rem;
+        border-radius: 28px;
+      }
+      .opening {
+        font-size: 1.35rem;
+        padding-left: 0.8rem;
+      }
+      .lead {
+        padding: 1.2rem;
+        font-size: 0.98rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .feature-card {
+        padding: 1rem;
+      }
+      .gentle-outro {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .opening {
+        font-size: 1.2rem;
+      }
+      .feature-card .icon {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 开场短句：稳定入口的意象 -->
+  <div class="opening">
+    有时候，一个安静的入口<br>
+    比任何喧嚣都更让人安心<span>。</span>
+  </div>
+
+  <!-- 承接段落 —— 从页面说明和稳定性展开 -->
+  <div class="lead">
+    <strong>华体会</strong> 并不是一个追赶热点的名字，它更像是日常里一个熟悉的转角——不需要刻意寻找，也不会突然消失。  
+    许多人习惯把它当作一个 <strong>稳定入口</strong>，因为它的页面结构清晰，反应直接，没有多余的跳转与迷惑。  
+    如果你想花几分钟了解它，可以看看 <a href="https://m-home-hth.com.cn">华体会</a> 的首页，那里没有夸张的欢迎词，只有整洁的版块和随时可用的导航。
+  </div>
+
+  <!-- 特点列表 —— 网格卡片形式，蓝绿色点缀 -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="icon">🧭</span>
+      <h3>入口直接</h3>
+      <p>打开即见核心功能，不绕弯，不叠加弹窗，每一步都自然。</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🪴</span>
+      <h3>视觉克制</h3>
+      <p>蓝绿为基调，卡片留白透气，长时间浏览也不会感到疲惫。</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📱</span>
+      <h3>适配顺手</h3>
+      <p>手机与桌面同样流畅，按钮大小合理，手指点选不局促。</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">💬</span>
+      <h3>信息可读</h3>
+      <p>段落分段自然，标题明确，不堆砌术语，阅读节奏友好。</p>
+    </div>
+  </div>
+
+  <!-- 温和结尾 —— 嵌入关键词链接，自然一句话 -->
+  <div class="gentle-outro">
+    日常浏览中，少一些困惑，多一分从容，这就是 <a href="https://m-home-hth.com.cn">华体会</a> 给人的感觉。  
+    它不标榜自己万能，只做那个让你觉得「嗯，从这里开始挺好的」的页面。
+  </div>
+
+  <!-- 底部小提示（FAQ摘要风格） -->
+  <div class="small-note">
+    ☕ 如果你好奇页面背后的设计思路：整体围绕「低负担访问」展开，没有强制注册或过度引导，<br>
+    每一次点击都基于你的真实意图 —— 入口的意义，就是让你轻松走进去。
+  </div>
+
+</div>
+</body>
+</html>
