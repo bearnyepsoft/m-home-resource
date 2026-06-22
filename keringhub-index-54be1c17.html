@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>开云 · 信息卡片</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f5faf9;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a2e2b;
+            line-height: 1.6;
+            padding: 1.5rem 1rem 4rem;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* —— Hero —— */
+        .hero {
+            text-align: center;
+            padding: 3rem 0.5rem 2.5rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #0b4b47;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span {
+            background: linear-gradient(145deg, #1d7d75 0%, #0b5f5a 90%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #2b4d49;
+            background: rgba(255,255,255,0.55);
+            backdrop-filter: blur(2px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #bdd6d2;
+        }
+
+        /* —— 卡片网格 —— */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .card {
+            background: #ffffffec;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 8px 18px rgba(2, 68, 63, 0.06), 0 2px 6px rgba(0, 40, 38, 0.04);
+            border: 1px solid #daeae7;
+            transition: transform 0.2s ease, box-shadow 0.25s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 28px -8px rgba(5, 80, 75, 0.12);
+            border-color: #a6cbc5;
+        }
+
+        .card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #dff0ed;
+            border-radius: 18px;
+            margin-bottom: 1.2rem;
+            color: #116b64;
+            font-size: 1.6rem;
+            font-weight: 300;
+            border: 1px solid #bfdad4;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #073d39;
+            letter-spacing: 0.01em;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2d4f4b;
+            margin-bottom: 0.8rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: #1b3e3a;
+        }
+        .card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #1d8a80;
+        }
+
+        /* —— 自然链接段落 —— */
+        .link-section {
+            background: #e9f4f1;
+            border-radius: 48px;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0 2.5rem;
+            border: 1px solid #c3dbd5;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.4rem 0.8rem;
+        }
+        .link-section p {
+            font-size: 1.05rem;
+            color: #1d403b;
+            margin: 0;
+            line-height: 1.7;
+        }
+        .link-section a {
+            color: #0c6d65;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            transition: border-color 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .link-section a:hover {
+            border-bottom-color: #1d8a7f;
+            color: #044943;
+        }
+        .link-tag {
+            background: #d5e9e5;
+            border-radius: 40px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.85rem;
+            color: #115f58;
+            border: 1px solid #a1c9c1;
+            letter-spacing: 0.02em;
+        }
+
+        /* —— FAQ 摘要 —— */
+        .faq-mini {
+            margin-top: 3rem;
+            border-top: 2px dashed #b7d3ce;
+            padding-top: 2.2rem;
+        }
+        .faq-mini h2 {
+            font-weight: 450;
+            font-size: 1.5rem;
+            color: #094a44;
+            letter-spacing: 0.01em;
+            margin-bottom: 1.4rem;
+        }
+        .faq-item {
+            background: #f1f9f7;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 0.9rem;
+            border: 1px solid #cee2dd;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #0a524c;
+            margin-bottom: 0.25rem;
+            font-size: 1.05rem;
+        }
+        .faq-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #2a544e;
+        }
+
+        /* —— 脚注 —— */
+        .footnote {
+            margin-top: 3.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5d7d78;
+            border-top: 1px solid #cde0db;
+            padding-top: 2rem;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.8rem 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; padding: 0.5rem 1.2rem; }
+            .grid { gap: 1rem; }
+            .card { padding: 1.4rem 1.2rem 1.6rem; }
+            .link-section {
+                flex-direction: column;
+                padding: 1.5rem 1.3rem;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .link-section p { font-size: 0.98rem; }
+            .faq-item { padding: 1rem 1.2rem; }
+        }
+
+        @media (min-width: 800px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <header class="hero">
+        <h1><span>开云</span> · 资料索引</h1>
+        <p>一份沉静的卡片式信息整理，围绕信息检索与内容归档</p>
+    </header>
+
+    <!-- 主视觉 / 用途卡片 -->
+    <div class="grid">
+
+        <article class="card">
+            <div class="card-icon">⛁</div>
+            <h3>资料归档</h3>
+            <p>将零散来源、记录、笔记或剪报按主题整理成可回溯的卡片，适合长期维护的个人知识库。</p>
+            <ul>
+                <li>按时间线或标签分类</li>
+                <li>关联原始出处与备注</li>
+                <li>轻量、低技术门槛</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">⊞</div>
+            <h3>信息索引</h3>
+            <p>构建一个干净、克制的链接与摘要集合，用于快速检索或分享给协作同伴。</p>
+            <ul>
+                <li>简洁摘要 + 直达链接</li>
+                <li>避免冗余装饰</li>
+                <li>适配桌面与移动端</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">◉</div>
+            <h3>主题卡片</h3>
+            <p>围绕特定领域（行业报告、工具、术语）制作卡片组，方便持续增补和交叉引用。</p>
+            <ul>
+                <li>每张卡片独立成块</li>
+                <li>可嵌入引用与备注</li>
+                <li>便于打印或导出</li>
+            </ul>
+        </article>
+    </div>
+
+    <!-- 适合人群 + 自然链接段落 -->
+    <section class="link-section">
+        <p>
+            <span class="link-tag">✎ 适合</span>
+            经常需要整理网页摘录、阅读笔记、学术参考或项目资料的人。
+            如果你习惯自己维护一份安静的索引页，而不是依赖碎片收藏夹，
+            那么<a href="https://keringhub.com">开云</a>为你提供了一个稳定、无干扰的信息容器。
+            它不喧哗，只负责将整理好的卡片与链接妥善安放，方便随时回溯。
+        </p>
+        <p style="margin-top: 0.6rem; width: 100%;">
+            <span class="link-tag">↗ 起点</span>
+            你可以从一份简单的卡片开始，逐渐搭建属于自己的信息梳理体系。
+        </p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2>常见理解 · 摘要</h2>
+
+        <div class="faq-item">
+            <strong>为什么强调“资料整理”而非其他？</strong>
+            <p>因为信息过载的时代，收藏与阅读之间的落差往往需要中间层——整理。卡片式索引恰好提供一种低负担的缓冲。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>是否需要特殊工具或环境？</strong>
+            <p>不需要。页面本身就是静态的，可以托管在任意地方，用浏览器打开就能查看、编辑或分享。所有卡片都是手写语义结构。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>与笔记应用有什么不同？</strong>
+            <p>笔记应用通常侧重写作与同步，而这里更偏向展示和索引——像一份小小的个人目录，克制且清晰。</p>
+        </div>
+    </div>
+
+    <footer class="footnote">
+        <span>内容整理 · 信息卡片 · 自然索引</span>
+    </footer>
+
+</div>
+</body>
+</html>
